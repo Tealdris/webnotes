@@ -31,6 +31,3 @@ services:
             - webnotes_network
         ports:
             - 8000:80
-networks:
-    webnotes_network:
-        driver: bridge
