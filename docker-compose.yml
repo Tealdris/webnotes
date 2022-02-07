@@ -7,8 +7,6 @@ services:
             - db.env
         volumes:
             - ./db_data/:/var/lib/postgresql/data/
-        networks:
-            - webnotes_network
     api:
         image: "api:ls3"
         build: ./api/.
@@ -17,8 +15,6 @@ services:
         command: uvicorn API_Server:app --host api --port 80
         depends_on:
             - db
-        networks:
-            - webnotes_network
     server:
         image: "server:ls3"
         build: ./server/.
@@ -27,7 +23,5 @@ services:
         depends_on:
             - db
             - api
-        networks:
-            - webnotes_network
         ports:
             - 8000:80
