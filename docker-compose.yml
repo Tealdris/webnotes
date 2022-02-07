@@ -34,4 +34,5 @@ services:
 
 networks:
     webnotes_network:
-        driver: bridge
+        external:
+            name: webnotes_network
