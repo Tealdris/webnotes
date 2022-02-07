@@ -8,7 +8,7 @@ services:
         volumes:
             - ./db_data/:/var/lib/postgresql/data/
         networks:
-            - webnotes_network
+            - myapp
 
     api:
         build: ./api/.
@@ -18,7 +18,7 @@ services:
         depends_on:
             - db
         networks:
-            - webnotes_network
+            - myapp
     
     server:
         build: ./server/.
@@ -28,11 +28,11 @@ services:
             - db
             - api
         networks:
-            - webnotes_network
+            - myapp
         ports:
             - 8000:80
 
 networks:
-    webnotes_network:
+    myapp:
         external:
-            name: webnotes_network
+            name: myapp
