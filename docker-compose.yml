@@ -7,8 +7,6 @@ services:
             - db.env
         volumes:
             - ./db_data/:/var/lib/postgresql/data/
-        networks:
-            - myapp
 
     api:
         build: ./api/.
@@ -17,8 +15,6 @@ services:
         command: uvicorn API_Server:app --host api --port 80
         depends_on:
             - db
-        networks:
-            - myapp
     
     server:
         build: ./server/.
@@ -27,11 +23,6 @@ services:
         depends_on:
             - db
             - api
-        networks:
-            - myapp
         ports:
             - 8000:80
 
-networks:
-    myapp:
-        driver: bridge
