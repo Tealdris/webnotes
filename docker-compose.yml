@@ -9,6 +9,7 @@ services:
             - ./db_data/:/var/lib/postgresql/data/
 
     api:
+        image: "api:ls3"
         build: ./api/.
         env_file:
             - api.env
@@ -17,6 +18,7 @@ services:
             - db
     
     server:
+        image: "server:ls3"
         build: ./server/.
         volumes:
             - ./server/html_files/:/usr/share/nginx/html
