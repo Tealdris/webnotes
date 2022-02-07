@@ -19,7 +19,6 @@ services:
             - db
         networks:
             - webnotes_network
-            -
     server:
         image: "server:ls3"
         build: ./server/.
